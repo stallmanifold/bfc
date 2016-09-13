@@ -1,4 +1,8 @@
-module Brainfuck where
+module Brainfuck
+    (
+    
+    )
+where
 
 
 data BFProg = BFProg [BFInstruction]
@@ -14,7 +18,7 @@ data BFInstruction = BFPointerInc
                    | BFLoop [BFInstruction]
 
 instance Show BFProg where
-    show BFProg = concatMap . show
+    show (BFProg instructions) = concatMap show instructions
 
 instance Show BFInstruction where
     show BFPointerInc      = ">"
@@ -25,3 +29,4 @@ instance Show BFInstruction where
     show BFWriteByte       = "."
     show BFBeginLoop       = "["
     show BFEndLoop         = "]"
+
