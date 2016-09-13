@@ -1,6 +1,6 @@
 module Brainfuck.Parser
     (
-        atomicInstrTest
+        
     ) where
 
 import Text.Megaparsec.Prim
@@ -40,5 +40,17 @@ bfReadByte = token (atomicInstrTest BFReadByte BFDot)
 bfWriteByte :: ErrorComponent e => Maybe (BFToken) -> ParsecT e BFTokenStream m BFInstruction
 bfWriteByte = token (atomicInstrTest BFWriteByte BFComma)
 
---bfBeginLoop
---bfEndLoop
+bfAtomicInstr :: ErrorComponent e => Maybe (BFToken) -> ParsecT e BFTokenStream m BFInstruction
+bfAtomicInstr maybeTok = bfPointerInc maybeTok 
+                      <|> bfPointerDec maybeTok
+                      <|> bfPointerDerefInc maybeTok
+                      <|> bfPointerDerefDec maybeTok
+                      <|> bfReadByte maybeTok
+                      <|> bfWriteByte maybeTok
+
+bfBeginLoop :: ErrorComponent e => Maybe (BFToken) -> ParsecT e BFTokenStream m BFInstruction
+bfBeginLoop = token (atomicInstrTest BFBeginLoop BFRightBrace) 
+
+bfEndLoop :: ErrorComponent e => Maybe (BFToken) -> ParsecT e BFTokenStream m BFInstruction
+bfEndLoop = token (atomicInstrTest BFEndLoop BFLeftBrace)
+
