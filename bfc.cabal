@@ -1,0 +1,28 @@
+-- see http://haskell.org/cabal/users-guide/
+name:                  bfc
+version:               0.1.0.0
+synopsis:              The repository bfc is a Brainfuck compiler.
+description:           BFC is a simple Brainfuck compiler supporting multiple
+                       compiler backend targets include C, Rust, and LLVM. It supports
+                       standard barebones Brainfuck according to the standard maintained
+                       by MuppetLabs found at
+                       http://www.muppetlabs.com/~breadbox/bf/.
+license:               BSD3
+license-file:          LICENSE
+author:                Christopher Blanchard
+maintainer:            stallmanifold@gmail.com
+-- copyright:
+-- category:
+build-type:            Simple
+extra-source-files:    ChangeLog.md
+cabal-version:         >=1.10
+
+executable bfc
+  main-is:             Main.hs
+  -- other-modules:
+  -- other-extensions:
+  build-depends:       base       >=4.9 && <4.10
+                       megaparsec >=5.0
+                       bytestring >=0.10
+  hs-source-dirs:      src
+  default-language:    Haskell2010
