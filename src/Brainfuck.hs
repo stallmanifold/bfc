@@ -1,6 +1,7 @@
 module Brainfuck
     (
-    
+        BFProg(..),
+        BFInstruction(..)
     )
 where
 
