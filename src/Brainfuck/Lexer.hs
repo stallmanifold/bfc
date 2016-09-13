@@ -1,10 +1,10 @@
 {-# LANGUAGE TypeFamilies #-}
 
-module Lexer
+module Brainfuck.Lexer
     (
         BFToken(..),
         BFTokenStream(..),
-        bkTokenStream,
+        bfTokenStream,
         minimize
     ) where
 
@@ -20,14 +20,14 @@ import Text.Megaparsec.Pos
 
 
 
-data BFToken = RightBracket -- ">"
-             | LeftBracket  -- "<"
-             | PlusSign     -- "+"
-             | MinusSign    -- "-"
-             | Dot          -- "."
-             | Comma        -- ","
-             | LeftBrace    -- "["
-             | RightBrace   -- "]"
+data BFToken = BFRightBracket -- ">"
+             | BFLeftBracket  -- "<"
+             | BFPlusSign     -- "+"
+             | BFMinusSign    -- "-"
+             | BFDot          -- "."
+             | BFComma        -- ","
+             | BFLeftBrace    -- "["
+             | BFRightBrace   -- "]"
              deriving(Eq, Ord, Show)
 
 
@@ -45,14 +45,14 @@ instance Stream BFTokenStream where
 
 toInstr :: Word8 -> Maybe BFToken
 toInstr w = case w2c w of
-    '>' -> Just RightBracket
-    '<' -> Just LeftBracket
-    '+' -> Just PlusSign
-    '-' -> Just MinusSign
-    '.' -> Just Dot
-    ',' -> Just Comma
-    '[' -> Just LeftBrace
-    ']' -> Just RightBrace
+    '>' -> Just BFRightBracket
+    '<' -> Just BFLeftBracket
+    '+' -> Just BFPlusSign
+    '-' -> Just BFMinusSign
+    '.' -> Just BFDot
+    ',' -> Just BFComma
+    '[' -> Just BFLeftBrace
+    ']' -> Just BFRightBrace
     _   -> Nothing
 
 bfUpdatePos :: Pos -> SourcePos -> BFToken -> (SourcePos, SourcePos)
