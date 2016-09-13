@@ -2,7 +2,10 @@
 
 module Lexer
     (
-
+        BFToken(..),
+        BFTokenStream(..),
+        bkTokenStream,
+        minimize
     ) where
 
 import Data.ByteString          as BS

@@ -1,6 +1,6 @@
 -- see http://haskell.org/cabal/users-guide/
 name:                  bfc
-version:               0.1.0.1
+version:               0.1.0.2
 synopsis:              The repository bfc is a Brainfuck compiler.
 description:           BFC is a simple Brainfuck compiler supporting multiple
                        compiler backend targets include C, Rust, and LLVM. It
