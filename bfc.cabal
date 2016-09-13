@@ -6,7 +6,7 @@ description:           BFC is a simple Brainfuck compiler supporting multiple
                        compiler backend targets include C, Rust, and LLVM. It
                        supports standard barebones Brainfuck according to the
                        standard maintained by MuppetLabs found at
-                       http://www.muppetlabs.com/~breadbox/bf/.
+                       http://www.muppetlabs.com/~breadbox/bf/standards.html
 license:               BSD3
 license-file:          LICENSE
 author:                Christopher Blanchard
