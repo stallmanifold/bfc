@@ -17,8 +17,10 @@ data BFInstruction = BFPointerInc
                    | BFEndLoop
                    | BFLoop [BFInstruction]
 
+
 instance Show BFProg where
     show (BFProg instructions) = concatMap show instructions
+
 
 instance Show BFInstruction where
     show BFPointerInc      = ">"

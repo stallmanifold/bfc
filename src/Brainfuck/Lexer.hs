@@ -55,6 +55,7 @@ toInstr w = case w2c w of
     ']' -> Just BFRightBrace
     _   -> Nothing
 
+
 bfUpdatePos :: Pos -> SourcePos -> BFToken -> (SourcePos, SourcePos)
 bfUpdatePos tabWidth oldPos@(SourcePos name line col) token = (oldPos, newPos)
     where

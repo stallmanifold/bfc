@@ -1,6 +1,6 @@
 module Brainfuck.Parser
     (
-        
+        bfParser
     ) where
 
 import Text.Megaparsec.Prim
@@ -72,3 +72,14 @@ bfLoop maybeTok = do
     body  <- many ((bfAtomicInstrList maybeTok) <|> bfLoop maybeTok)
     end   <- bfEndLoop maybeTok
     return $ [begin] ++ join body ++ [end]
+
+
+bfProgList :: ErrorComponent e => Maybe (BFToken) -> ParsecT e BFTokenStream m [BFInstruction]
+bfProgList maybeTok = join <$> some ((bfAtomicInstrList maybeTok) <|> (bfLoop maybeTok))
+
+bfProg :: ErrorComponent e => Maybe (BFToken) -> ParsecT e BFTokenStream m BFProg
+bfProg maybeTok = BFProg <$> bfProgList maybeTok
+
+-- | Brainfuck program parser. 
+bfParser :: ErrorComponent e => ParsecT e BFTokenStream m BFProg
+bfParser = bfProg Nothing
