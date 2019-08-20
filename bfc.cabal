@@ -10,7 +10,7 @@ description:           BFC is a simple Brainfuck compiler supporting multiple
 license:               BSD3
 license-file:          LICENSE
 author:                Christopher Blanchard
-maintainer:            stallmanifold@gmail.com
+maintainer:            lambda.xymox@gmail.com
 copyright:             2016
 -- category:
 build-type:            Simple
